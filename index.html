@@ -1,503 +1,244 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d2b">
   <meta name="description" content="Coastline Digital creates modern, professional websites for small businesses along the Mississippi Gulf Coast.">
   <title>Coastline Digital | Your Business. Elevated Online.</title>
   <style>
     :root {
-      --navy: #101F32;
-      --teal: #56B8B0;
-      --champagne: #D9C49B;
-      --ivory: #F5F3EE;
-      --white: #FFFFFF;
-      --muted: #AAB6C2;
+      --navy: #101d2b;
+      --navy-2: #172b3c;
+      --teal: #2b9b98;
+      --teal-light: #dff2ef;
+      --champagne: #d7bd8a;
+      --ink: #1c2933;
+      --muted: #667681;
+      --paper: #fbfaf7;
+      --white: #fff;
+      --line: #e7e5df;
+      --shadow: 0 22px 60px rgba(16,29,43,.10);
+      --radius: 18px;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--ivory);
-      color: var(--navy);
-      line-height: 1.6;
+      margin: 0; color: var(--ink); background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
     }
-
-    a { text-decoration: none; }
-
-    .container {
-      width: min(1120px, 90%);
-      margin: auto;
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar { background: var(--navy); color: #e8edf0; font-size: .82rem; letter-spacing: .04em; }
+    .topbar .wrap { display:flex; justify-content:space-between; gap:16px; padding:9px 0; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(251,250,247,.94); backdrop-filter: blur(12px); border-bottom:1px solid rgba(231,229,223,.8); }
+    .nav { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .mark { width:39px; height:39px; display:grid; place-items:center; border:1px solid var(--champagne); border-radius:50%; color:var(--teal); font-family: Georgia,serif; font-size:1.3rem; }
+    .brand strong { display:block; color:var(--navy); font-family:Georgia,serif; font-size:1.13rem; letter-spacing:.07em; line-height:1.15; }
+    .brand small { color:var(--muted); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; }
+    .navlinks { display:flex; align-items:center; gap:27px; }
+    .navlinks a { color:#40515c; text-decoration:none; font-size:.9rem; }
+    .navlinks a:hover { color:var(--teal); }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; padding:13px 21px; border-radius:999px; background:var(--teal); color:white; text-decoration:none; font-weight:650; font-size:.92rem; border:1px solid var(--teal); transition:.2s ease; }
+    .btn:hover { background:#217e7c; transform:translateY(-1px); }
+    .btn.outline { background:transparent; color:white; border-color:rgba(255,255,255,.45); }
+    .btn.outline:hover { background:rgba(255,255,255,.1); }
+    .hero { overflow:hidden; position:relative; color:white; background: radial-gradient(ellipse at 82% 18%, rgba(43,155,152,.27), transparent 35%), linear-gradient(120deg,var(--navy),#1a3445 72%,#1a4a4b); }
+    .hero:after { content:""; position:absolute; width:470px; height:470px; border:1px solid rgba(215,189,138,.22); border-radius:50%; right:-120px; bottom:-300px; box-shadow:0 0 0 35px rgba(215,189,138,.035),0 0 0 75px rgba(215,189,138,.025); }
+    .hero-inner { position:relative; z-index:1; display:grid; grid-template-columns:1.2fr .8fr; gap:50px; align-items:center; padding:105px 0 112px; }
+    .eyebrow { color:var(--champagne); text-transform:uppercase; letter-spacing:.19em; font-size:.72rem; font-weight:700; }
+    h1,h2,h3 { font-family:Georgia,"Times New Roman",serif; font-weight:500; line-height:1.13; }
+    h1 { max-width:720px; margin:18px 0 22px; font-size:clamp(3rem,6.4vw,5.6rem); letter-spacing:-.045em; }
+    h1 span { color:var(--champagne); }
+    .hero p { max-width:590px; color:#d6e0e4; font-size:1.08rem; margin:0 0 30px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-card { justify-self:end; width:min(100%,350px); padding:30px; border:1px solid rgba(215,189,138,.38); border-radius:var(--radius); background:rgba(255,255,255,.055); box-shadow:0 24px 70px rgba(0,0,0,.15); }
+    .hero-card .mini { color:var(--champagne); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
+    .hero-card h2 { font-size:2rem; margin:14px 0; }
+    .hero-card p { font-size:.95rem; margin:0; }
+    .hero-card .rule { height:1px; background:rgba(215,189,138,.35); margin:23px 0; }
+    .hero-card ul { list-style:none; padding:0; margin:0; color:#e2e9eb; font-size:.9rem; }
+    .hero-card li { margin:8px 0; }
+    .hero-card li:before { content:"✓"; color:var(--champagne); margin-right:10px; }
+    section { padding:88px 0; }
+    .section-head { max-width:680px; margin:0 auto 45px; text-align:center; }
+    .section-head .eyebrow { color:var(--teal); }
+    h2 { color:var(--navy); font-size:clamp(2.25rem,4vw,3.35rem); margin:13px 0 16px; letter-spacing:-.025em; }
+    .section-head p { color:var(--muted); margin:0; }
+    .services { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .service { padding:30px 27px; background:white; border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 8px 28px rgba(16,29,43,.035); }
+    .service .num { color:var(--teal); font-family:Georgia,serif; font-size:1.15rem; }
+    .service h3 { color:var(--navy); font-size:1.55rem; margin:15px 0 10px; }
+    .service p { color:var(--muted); font-size:.95rem; margin:0; }
+    .about { background:#f0f3f0; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:65px; align-items:center; }
+    .about-copy .eyebrow { color:var(--teal); }
+    .about-copy p { color:#596b75; }
+    .checklist { display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-top:25px; }
+    .check { display:flex; gap:10px; align-items:flex-start; font-size:.92rem; color:#40515c; }
+    .check span { color:var(--teal); font-weight:800; }
+    .about-panel { background:var(--navy); color:white; padding:38px; border-radius:var(--radius); box-shadow:var(--shadow); }
+    .about-panel .eyebrow { color:var(--champagne); }
+    .about-panel h3 { font-size:2rem; margin:14px 0; }
+    .about-panel p { color:#d4dfe3; }
+    .process { display:grid; grid-template-columns:repeat(3,1fr); gap:25px; counter-reset:step; }
+    .step { border-top:2px solid var(--champagne); padding-top:22px; }
+    .step strong { color:var(--teal); font-size:.76rem; letter-spacing:.15em; text-transform:uppercase; }
+    .step h3 { color:var(--navy); font-size:1.55rem; margin:9px 0; }
+    .step p { color:var(--muted); font-size:.94rem; margin:0; }
+    .pricing { background:white; }
+    .pricing-note { max-width:720px; margin:0 auto; text-align:center; padding:32px; border:1px solid var(--line); border-radius:var(--radius); background:var(--paper); }
+    .pricing-note h3 { color:var(--navy); font-size:1.65rem; margin:0 0 10px; }
+    .pricing-note p { color:var(--muted); margin:0 0 20px; }
+    .contact { color:white; background:linear-gradient(120deg,var(--navy),#1b4148); text-align:center; }
+    .contact .eyebrow { color:var(--champagne); }
+    .contact h2 { color:white; max-width:720px; margin:14px auto 17px; }
+    .contact p { color:#d3e0e2; max-width:610px; margin:0 auto 27px; }
+    .email-line { display:block; margin-top:18px; color:#e5d5b5; font-size:.94rem; text-decoration:none; }
+    footer { background:#0b1520; color:#b7c2c8; padding:24px 0; font-size:.82rem; }
+    footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    footer a { color:#d9c69f; text-decoration:none; }
+    @media (max-width:800px) {
+      .navlinks { gap:14px; }
+      .navlinks a:not(.btn) { display:none; }
+      .hero-inner { grid-template-columns:1fr; padding:78px 0 84px; gap:38px; }
+      .hero-card { justify-self:start; }
+      .services { grid-template-columns:1fr; }
+      .about-grid { grid-template-columns:1fr; gap:35px; }
+      .process { grid-template-columns:1fr; gap:30px; }
     }
-
-    header {
-      background: var(--navy);
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(217,196,155,.2);
+    @media (max-width:480px) {
+      .wrap { width:min(100% - 30px,1120px); }
+      .topbar .wrap { font-size:.72rem; }
+      .nav { min-height:68px; }
+      .navlinks .btn { padding:10px 14px; font-size:.82rem; }
+      .hero-actions .btn { width:100%; }
+      section { padding:68px 0; }
+      .checklist { grid-template-columns:1fr; }
+      .about-panel { padding:28px; }
     }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .logo {
-      color: var(--white);
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .logo span { color: var(--teal); }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--white);
-      font-size: 14px;
-    }
-
-    .nav-links a:hover { color: var(--teal); }
-
-    .hero {
-      background:
-        radial-gradient(ellipse at 80% 20%, rgba(86,184,176,.2), transparent 45%),
-        linear-gradient(135deg, #101F32, #172F46);
-      color: var(--white);
-      padding: 115px 0 125px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      color: var(--champagne);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1.08;
-      max-width: 850px;
-      margin: auto;
-      letter-spacing: -2px;
-    }
-
-    h1 span { color: var(--teal); }
-
-    .hero p {
-      color: #D3DCE4;
-      max-width: 650px;
-      margin: 25px auto 35px;
-      font-size: 18px;
-    }
-
-    .button {
-      display: inline-block;
-      background: var(--teal);
-      color: var(--navy);
-      padding: 15px 27px;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: .2s;
-    }
-
-    .button:hover {
-      background: var(--champagne);
-      transform: translateY(-2px);
-    }
-
-    .button-outline {
-      border: 1px solid var(--champagne);
-      color: var(--champagne);
-      padding: 14px 25px;
-      border-radius: 4px;
-      display: inline-block;
-      font-weight: bold;
-    }
-
-    .hero .button-outline { margin-left: 10px; }
-
-    section { padding: 85px 0; }
-
-    .section-heading {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 48px;
-    }
-
-    .section-heading .eyebrow { color: #568E8C; }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 43px);
-      line-height: 1.2;
-      margin-bottom: 15px;
-    }
-
-    .section-heading p { color: #647181; }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .service-card {
-      background: var(--white);
-      padding: 32px 27px;
-      border-radius: 7px;
-      border: 1px solid #E5E2DA;
-      box-shadow: 0 10px 30px rgba(16,31,50,.04);
-    }
-
-    .service-icon {
-      font-size: 30px;
-      margin-bottom: 17px;
-    }
-
-    .service-card h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .service-card p { color: #647181; font-size: 15px; }
-
-    .about {
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 65px;
-    }
-
-    .about .eyebrow { color: var(--teal); }
-    .about p { color: #C5D0DA; margin: 18px 0; }
-
-    .about-panel {
-      border: 1px solid rgba(217,196,155,.35);
-      padding: 38px;
-      border-radius: 8px;
-      background: rgba(255,255,255,.035);
-    }
-
-    .about-panel h3 {
-      color: var(--champagne);
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    .check {
-      color: var(--teal);
-      font-weight: bold;
-      margin-right: 9px;
-    }
-
-    .about-panel li {
-      list-style: none;
-      margin: 13px 0;
-      color: #E0E6EB;
-    }
-
-    .pricing {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .price-card {
-      background: white;
-      padding: 34px 27px;
-      border-radius: 7px;
-      border: 1px solid #E5E2DA;
-    }
-
-    .price-card.featured {
-      border: 2px solid var(--teal);
-      transform: translateY(-8px);
-    }
-
-    .price-card h3 { font-size: 21px; }
-    .price {
-      font-size: 37px;
-      font-weight: 800;
-      margin: 12px 0;
-    }
-
-    .price-card p { color: #647181; font-size: 14px; }
-    .price-card ul { margin: 23px 0; }
-
-    .price-card li {
-      list-style: none;
-      margin: 10px 0;
-      font-size: 14px;
-    }
-
-    .price-card li::before {
-      content: "✓";
-      color: #368E88;
-      font-weight: bold;
-      margin-right: 9px;
-    }
-
-    .price-note {
-      text-align: center;
-      color: #647181;
-      font-size: 13px;
-      margin-top: 30px;
-    }
-
-    .contact {
-      background: #EAE8E1;
-      text-align: center;
-    }
-
-    .contact-content {
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .contact p {
-      color: #647181;
-      margin: 18px auto 28px;
-    }
-
-    .contact-note {
-      font-size: 13px;
-      margin-top: 20px !important;
-    }
-
-    footer {
-      background: var(--navy);
-      color: #B9C5D0;
-      padding: 30px 0;
-      text-align: center;
-      font-size: 13px;
-    }
-
-    footer strong { color: var(--white); }
-
-    @media (max-width: 760px) {
-      .nav-links { gap: 12px; }
-      .nav-links a { font-size: 12px; }
-      .logo { font-size: 19px; }
-      .hero { padding: 85px 0; }
-      .services, .pricing, .about-content {
-        grid-template-columns: 1fr;
-      }
-      .price-card.featured { transform: none; }
-      section { padding: 65px 0; }
-      .hero .button-outline {
-        margin: 12px 0 0;
-      }
-    }
-
-    @media (max-width: 390px) {
-      nav { flex-wrap: wrap; }
-      .nav-links { width: 100%; justify-content: space-between; }
-    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { transition:none !important; } }
   </style>
 </head>
 <body>
-
-<header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="#">COASTLINE<span>.</span></a>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow">Mississippi Gulf Coast Digital Studio</div>
-      <h1>Your Business.<br><span>Elevated Online.</span></h1>
-      <p>
-        Your business deserves more than just a place online.
-        We create modern, professional websites that help local
-        businesses make a stronger first impression.
-      </p>
-      <a class="button" href="#contact">Let's Build Your Website</a>
-      <a class="button-outline" href="#services">Explore Services</a>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="container">
-      <div class="section-heading">
-        <div class="eyebrow">What We Do</div>
-        <h2>A Better Online Presence Starts Here.</h2>
-        <p>Practical digital solutions designed to help your business
-          look professional and connect with more customers.</p>
-      </div>
-
-      <div class="services">
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Website Design</h3>
-          <p>Clean, modern websites designed around your business,
-            your services, and your customers.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">⌘</div>
-          <h3>Mobile-Friendly Design</h3>
-          <p>Responsive layouts that make your website easy to use
-            on phones, tablets, and computers.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">↗</div>
-          <h3>Digital Presence</h3>
-          <p>Clear business information, service descriptions,
-            and contact pathways to help customers find you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="container about-content">
-      <div>
-        <div class="eyebrow">Your Local Digital Partner</div>
-        <h2>Small Business.<br>Professional Presence.</h2>
-        <p>
-          Coastline Digital was created with one goal:
-          make professional website design more accessible
-          to small businesses along the Mississippi Gulf Coast.
-        </p>
-        <p>
-          Whether you're starting from scratch or ready to
-          improve an existing website, we focus on thoughtful
-          design, clear communication, and a straightforward process.
-        </p>
-        <a class="button" href="#contact">Start a Conversation</a>
-      </div>
-
-      <div class="about-panel">
-        <h3>Built Around Your Business</h3>
-        <ul>
-          <li><span class="check">✓</span> Personalized website design</li>
-          <li><span class="check">✓</span> Mobile-responsive layouts</li>
-          <li><span class="check">✓</span> Clear service information</li>
-          <li><span class="check">✓</span> Straightforward project process</li>
-          <li><span class="check">✓</span> Local business focus</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div class="container">
-      <div class="section-heading">
-        <div class="eyebrow">Simple Starting Packages</div>
-        <h2>Professional Design. Clear Pricing.</h2>
-        <p>Starting packages for businesses ready to improve
-          their online presence.</p>
-      </div>
-
-      <div class="pricing">
-        <div class="price-card">
-          <h3>Starter</h3>
-          <div class="price">$199</div>
-          <p>One-page website</p>
-          <ul>
-            <li>Custom one-page layout</li>
-            <li>Mobile-friendly design</li>
-            <li>Business information</li>
-            <li>Contact section</li>
-          </ul>
-          <a class="button" href="#contact">Get Started</a>
-        </div>
-
-        <div class="price-card featured">
-          <h3>Business</h3>
-          <div class="price">$299</div>
-          <p>Up to three pages</p>
-          <ul>
-            <li>Custom website design</li>
-            <li>Up to three pages</li>
-            <li>Mobile-friendly layout</li>
-            <li>Services and contact sections</li>
-          </ul>
-          <a class="button" href="#contact">Get Started</a>
-        </div>
-
-        <div class="price-card">
-          <h3>Professional</h3>
-          <div class="price">$449</div>
-          <p>Up to five pages</p>
-          <ul>
-            <li>Custom website design</li>
-            <li>Up to five pages</li>
-            <li>Mobile-friendly layout</li>
-            <li>Expanded business content</li>
-          </ul>
-          <a class="button" href="#contact">Get Started</a>
-        </div>
-      </div>
-
-      <p class="price-note">
-        Starting prices. Final quotes depend on project scope and features.
-        Domain registration, hosting, and third-party services are separate
-        and paid directly by the customer.
-      </p>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="container contact-content">
-      <div class="eyebrow">Let's Work Together</div>
-      <h2>Your Next Chapter Starts Online.</h2>
-      <p>
-        Have a business that needs a better website?
-        Let's talk about your goals and explore what we can build together.
-      </p>
-      <a class="button" href="mailto:REPLACE_WITH_YOUR_EMAIL">
-        Email Coastline Digital
+  <div class="topbar"><div class="wrap"><span>Mississippi Gulf Coast</span><span>Thoughtful websites for local businesses</span></div></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Coastline Digital home">
+        <span class="mark" aria-hidden="true">C</span>
+        <span><strong>COASTLINE DIGITAL</strong><small>Websites with purpose</small></span>
       </a>
-      <p class="contact-note">
-        Please replace the email address in this button with your
-        business email before sharing the website publicly.
-      </p>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a>
+        <a class="btn" href="#contact">Let's Talk <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-  </section>
-</main>
+  </header>
 
-<footer>
-  <div class="container">
-    <strong>COASTLINE DIGITAL</strong><br>
-    Your business. Elevated online.<br>
-    <span>Serving Hancock County and the Mississippi Gulf Coast.</span><br><br>
-    © <span id="year"></span> Coastline Digital. All rights reserved.
-  </div>
-</footer>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <div class="eyebrow">A stronger online presence starts here</div>
+          <h1>Your Business.<br><span>Elevated Online.</span></h1>
+          <p>We create modern, professional websites that help Mississippi Gulf Coast businesses make a confident first impression and make it easier for customers to connect.</p>
+          <div class="hero-actions">
+            <a class="btn" href="mailto:coastlinedigital.ms@gmail.com?subject=Website%20project%20inquiry">Start a Conversation <span aria-hidden="true">↗</span></a>
+            <a class="btn outline" href="#services">Explore Services</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Our approach">
+          <div class="mini">The Coastline approach</div>
+          <h2>Clear. Modern. Built around you.</h2>
+          <p>Practical website design focused on what matters: your business, your customers, and the next step.</p>
+          <div class="rule"></div>
+          <ul><li>Personalized design</li><li>Mobile-friendly layouts</li><li>Clear calls to action</li><li>Local business focus</li></ul>
+        </aside>
+      </div>
+    </section>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What we do</div>
+          <h2>A better online presence starts here.</h2>
+          <p>Practical digital solutions designed to help your business look professional, explain what you do, and connect with more customers.</p>
+        </div>
+        <div class="services">
+          <article class="service"><div class="num">01 / Design</div><h3>Website Design</h3><p>Clean, modern websites shaped around your business, your services, and the people you want to reach.</p></article>
+          <article class="service"><div class="num">02 / Experience</div><h3>Mobile-Friendly Design</h3><p>Responsive layouts that are easy to navigate on phones, tablets, and desktop screens.</p></article>
+          <article class="service"><div class="num">03 / Clarity</div><h3>Digital Presence</h3><p>Organized business information, clear service descriptions, and straightforward ways for customers to contact you.</p></article>
+        </div>
+      </div>
+    </section>
 
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div class="about-copy">
+          <div class="eyebrow">Built for small business</div>
+          <h2>Small business.<br>Professional presence.</h2>
+          <p>Coastline Digital was created with one goal: make professional website design more accessible to small businesses along the Mississippi Gulf Coast.</p>
+          <p>Whether you're starting from scratch or ready to improve an existing website, we focus on thoughtful design, clear communication, and a straightforward process.</p>
+          <div class="checklist">
+            <div class="check"><span>✓</span> Personalized website design</div>
+            <div class="check"><span>✓</span> Mobile-responsive layouts</div>
+            <div class="check"><span>✓</span> Clear service information</div>
+            <div class="check"><span>✓</span> Straightforward process</div>
+          </div>
+        </div>
+        <div class="about-panel">
+          <div class="eyebrow">Your business, in focus</div>
+          <h3>Make it easy for customers to choose you.</h3>
+          <p>A good website should quickly communicate who you are, what you offer, and how someone can take the next step. That's the standard we build toward.</p>
+          <a class="btn" href="mailto:coastlinedigital.ms@gmail.com?subject=Let's%20discuss%20my%20website">Tell Us About Your Business</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A straightforward process</div>
+          <h2>From first conversation to launch.</h2>
+          <p>Clear steps, collaborative decisions, and no surprises about what happens next.</p>
+        </div>
+        <div class="process">
+          <article class="step"><strong>Step 01</strong><h3>Let's talk</h3><p>We learn about your business, goals, customers, and the kind of website that would serve you best.</p></article>
+          <article class="step"><strong>Step 02</strong><h3>Plan & create</h3><p>We agree on the scope, content, and direction, then prepare a design for your review.</p></article>
+          <article class="step"><strong>Step 03</strong><h3>Review & launch</h3><p>We check the details together, make approved refinements, and plan the launch when everything is ready.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A clear starting point</div>
+          <h2>Professional design. Straightforward proposals.</h2>
+          <p>Every business has different needs. We'll discuss your goals and provide a clear project proposal before work begins.</p>
+        </div>
+        <div class="pricing-note">
+          <h3>A website shaped around your needs.</h3>
+          <p>Project scope and pricing depend on the number of pages, content, features, and services required. Hosting, domain registration, and third-party services are separate and paid directly by the customer when applicable.</p>
+          <a class="btn" href="mailto:coastlinedigital.ms@gmail.com?subject=Request%20a%20website%20proposal">Request a Project Proposal</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="eyebrow">Let's build something better</div>
+        <h2>Your next chapter starts online.</h2>
+        <p>Have a business that needs a better website? Tell us a little about your goals. We'll take it from there.</p>
+        <a class="btn" href="mailto:coastlinedigital.ms@gmail.com?subject=Website%20project%20inquiry">Email Coastline Digital <span aria-hidden="true">↗</span></a>
+        <a class="email-line" href="mailto:coastlinedigital.ms@gmail.com">coastlinedigital.ms@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>© <span id="year">2026</span> Coastline Digital. All rights reserved.</span><span>Mississippi Gulf Coast · <a href="mailto:coastlinedigital.ms@gmail.com">Contact us</a></span></div></footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
